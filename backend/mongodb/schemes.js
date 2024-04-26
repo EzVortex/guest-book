@@ -8,6 +8,14 @@ const postScheme = new Schema({
 
 const Post = mongoose.model("Post", postScheme);
 
+const userScheme = new Schema({
+    login: String,
+    password: String
+});
+
+const User = mongoose.model("User", userScheme);
+
 module.exports = {
-    Post
+    Post,
+    User
 }

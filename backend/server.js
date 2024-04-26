@@ -16,6 +16,7 @@ app.use(cors({
 
 // Роуты
 app.use(require('./routes/post'));
+app.use(require('./routes/auth'));
 
 connectToDatabase()
     .then(() => {

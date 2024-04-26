@@ -1,5 +1,5 @@
 const express     = require('express');
-const { query, validationResult, body} = require('express-validator');
+const { validationResult, body} = require('express-validator');
 const {Post} = require("../mongodb/schemes");
 const {getIO} = require("../socketio/default");
 const router      = express.Router();

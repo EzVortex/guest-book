@@ -1,15 +1,15 @@
 <script lang="ts">
 import Vue from 'vue'
-import RegisterForm from '~/components/auth/RegisterForm.vue'
+import LoginForm from '~/components/auth/LoginForm.vue'
 
 export default Vue.extend({
   name: 'SignupPage',
   components: {
-    RegisterForm
+    LoginForm,
   },
-  head() {
+  head () {
     return {
-      title: 'Регистрация',
+      title: 'Авторизация',
     }
   },
 })
@@ -17,6 +17,6 @@ export default Vue.extend({
 
 <template>
   <div class="container">
-    <RegisterForm />
+    <LoginForm />
   </div>
 </template>

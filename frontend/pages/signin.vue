@@ -7,7 +7,7 @@ export default Vue.extend({
   components: {
     LoginForm,
   },
-  head () {
+  head() {
     return {
       title: 'Авторизация',
     }

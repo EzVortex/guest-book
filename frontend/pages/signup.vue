@@ -5,7 +5,7 @@ import RegisterForm from '~/components/auth/RegisterForm.vue'
 export default Vue.extend({
   name: 'SignupPage',
   components: {
-    RegisterForm
+    RegisterForm,
   },
   head() {
     return {

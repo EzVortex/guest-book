@@ -51,7 +51,7 @@ export default {
 
   toast: {
     position: 'top-right',
-    duration: 3000
+    duration: 3000,
   },
 
   io: {
@@ -71,7 +71,7 @@ export default {
           property: 'token',
           global: true,
           required: true,
-          type: 'Bearer'
+          type: 'Bearer',
         },
         user: {
           property: 'user',
@@ -80,10 +80,9 @@ export default {
         endpoints: {
           login: { url: '/signin', method: 'post' },
           logout: { url: '/logout', method: 'post' },
-          user: { url: '/user', method: 'get' }
-        }
-      }
-    }
-  }
-
+          user: { url: '/user', method: 'get' },
+        },
+      },
+    },
+  },
 }

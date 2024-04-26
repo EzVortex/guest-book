@@ -34,6 +34,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
+    '@nuxtjs/auth-next',
     '@nuxtjs/axios',
     '@nuxtjs/toast',
     'nuxt-socket-io',
@@ -62,4 +63,27 @@ export default {
       },
     ],
   },
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+          required: true,
+          type: 'Bearer'
+        },
+        user: {
+          property: 'user',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/signin', method: 'post' },
+          logout: { url: '/logout', method: 'post' },
+          user: { url: '/user', method: 'get' }
+        }
+      }
+    }
+  }
+
 }

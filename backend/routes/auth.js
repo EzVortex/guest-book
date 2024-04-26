@@ -1,12 +1,20 @@
 const express     = require('express');
 const { validationResult, body} = require('express-validator');
 const {User} = require("../mongodb/schemes");
-const {getIO} = require("../socketio/default");
 const router      = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const {verifyToken, secretKey} = require("../helpers/verify");
 
-const secretKey = 'mostSecretKeyInTheWholeWorld'
+router.get('/user',  verifyToken, (req, res) => {
+    res.json({user: req.user})
+})
+
+router.post('/logout', verifyToken, async (req, res) => {
+    return res.status(200).send({
+        message: 'Успешный выход'
+    })
+})
 
 router.post('/signin', body(['login', 'password']).notEmpty(), async (req, res) => {
     const result = validationResult(req)

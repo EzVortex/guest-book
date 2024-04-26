@@ -29,7 +29,7 @@ export default Vue.extend({
 
     this.socket.on('post_add', (msg) => {
       if (msg.text) {
-        this.posts.unshift({ text: msg.text })
+        this.posts.unshift({ author: msg.author || null, text: msg.text })
       }
     })
   },

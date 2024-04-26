@@ -44,11 +44,17 @@ export default {
       if (!this.login || !this.password) return
 
       try {
-        const response = await this.$axios.$post('/signin', { login: this.login, password: this.password })
+        const response = await this.$auth.loginWith('local', {
+          data: {
+            login: this.login,
+            password: this.password
+          }
+        })
+
 
         if (response && response.message) {
           this.$toast.success(response.message)
-          // this.$router.push('/')
+          this.$router.push('/')
         }
       } catch (e) {
         console.log(e)

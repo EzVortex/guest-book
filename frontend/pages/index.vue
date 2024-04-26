@@ -1,13 +1,13 @@
 <script lang="ts">
 import Vue from 'vue'
-import PostInput from '~/components/post/PostInput.vue'
-import AppButton from '~/components/app/AppButton.vue'
+import PostContainer from '~/components/post/PostContainer.vue'
+import PostForm from '~/components/post/PostForm.vue'
 
 export default Vue.extend({
   name: 'IndexPage',
   components: {
-    AppButton,
-    PostInput,
+    PostForm,
+    PostContainer,
   },
   head() {
     return {
@@ -16,20 +16,34 @@ export default Vue.extend({
   },
   data() {
     return {
-      comment: ''
+      text: null,
+      socket: null,
     }
   },
-  methods: {
-    async submit() {
-      console.log(this.comment)
-    }
-  }
+  mounted() {
+    this.socket = this.$nuxtSocket({
+      channel: '/',
+    })
+
+    if (!this.socket) return
+
+    this.socket.on('post_add', (msg) => {
+      if (msg.text) {
+        this.posts.unshift({ text: msg.text })
+      }
+    })
+  },
+  async asyncData({ $axios }) {
+    const posts = await $axios.$get(`/posts`)
+    posts.reverse()
+    return { posts }
+  },
 })
 </script>
 
 <template>
   <div class="container">
-    <PostInput @input="comment = $event" />
-    <AppButton @click="submit">Отправить</AppButton>
+    <PostForm />
+    <PostContainer :posts="posts" />
   </div>
 </template>

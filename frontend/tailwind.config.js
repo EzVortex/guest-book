@@ -5,13 +5,13 @@ module.exports = {
     './layouts/**/*.vue',
     './pages/**/*.vue',
     './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}'
+    './nuxt.config.{js,ts}',
   ],
   theme: {
     container: {
       center: true,
-      padding: '15px'
+      padding: '15px',
     },
   },
-  plugins: []
+  plugins: [],
 }

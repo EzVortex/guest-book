@@ -35,6 +35,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/toast',
     'nuxt-socket-io',
   ],
 
@@ -46,6 +47,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  toast: {
+    position: 'top-right',
+    duration: 3000
+  },
 
   io: {
     // module options

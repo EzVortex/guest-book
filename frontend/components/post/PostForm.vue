@@ -24,6 +24,7 @@ export default Vue.extend({
       this.busy = true
       if (this.text) {
         await this.$axios.$post('/post', { text: this.text })
+        this.$toast.success('Комментарий оставлен')
       }
       this.busy = false
     },
